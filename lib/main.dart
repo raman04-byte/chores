@@ -52,13 +52,31 @@ class _MyHomePageState extends State<MyHomePage> {
           title: const Text('Flutter App'),
         ),
         body: Column(
-          children: <Widget>[
+          children: [
             Card(
               child: Text('CHART!'),
             ),
-            Card(
-              child: Text('List of Transations'),
-            ),
+            Column(
+                children: transations.map((e) {
+              return Card(
+                child: Row(children: [
+                  Container(
+                    margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                      color: Colors.purple.shade600,
+                      width: 2,
+                    )),
+                    padding: EdgeInsets.all(10),
+                    child: Text(e.amount.toString(),
+                    style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color: Colors.purple.shade600),),
+                  ),
+                  Column(
+                    children: [Text(e.title), Text(e.date.toString())],
+                  )
+                ]),
+              );
+            }).toList()),
           ],
         ));
   }
