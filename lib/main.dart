@@ -1,3 +1,4 @@
+import 'package:chores/transaction.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -30,6 +31,20 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final List<Transation> transations = [
+    Transation(
+      id: 't1',
+      title: 'New chores',
+      amount: 69.68,
+      date: DateTime.now(),
+    ),
+    Transation(
+      id: 't2',
+      title: 'New chores2',
+      amount: 17.68,
+      date: DateTime.now(),
+    ),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +56,9 @@ class _MyHomePageState extends State<MyHomePage> {
             Card(
               child: Text('CHART!'),
             ),
-            Card(child: Text('List of Transations'),),
+            Card(
+              child: Text('List of Transations'),
+            ),
           ],
         ));
   }
