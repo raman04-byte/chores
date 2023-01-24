@@ -68,11 +68,24 @@ class _MyHomePageState extends State<MyHomePage> {
                       width: 2,
                     )),
                     padding: EdgeInsets.all(10),
-                    child: Text(e.amount.toString(),
-                    style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color: Colors.purple.shade600),),
+                    child: Text(
+                      e.amount.toString(),
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          color: Colors.purple.shade600),
+                    ),
                   ),
                   Column(
-                    children: [Text(e.title), Text(e.date.toString())],
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        e.title,
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
+                      ),
+                      Text(e.date.toString(),style: TextStyle(color: Colors.grey.shade700),)
+                    ],
                   )
                 ]),
               );
