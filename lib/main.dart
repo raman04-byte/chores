@@ -69,7 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     )),
                     padding: EdgeInsets.all(10),
                     child: Text(
-                      e.amount.toString(),
+                    '\$ ${e.amount}',
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
