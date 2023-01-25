@@ -12,20 +12,7 @@ class UserTransaction extends StatefulWidget {
 }
 
 class _UserTransactionState extends State<UserTransaction> {
-  final List<Transation> _userTransaction = [
-    Transation(
-      id: 't1',
-      title: 'New chores',
-      amount: 69.68,
-      date: DateTime.now(),
-    ),
-    Transation(
-      id: 't2',
-      title: 'New chores2',
-      amount: 17.68,
-      date: DateTime.now(),
-    ),
-  ];
+  final List<Transation> _userTransaction = [];
 
   void _addNewTransaction(String txTitle, double txAmount) {
     final newTx = Transation(
@@ -43,7 +30,7 @@ class _UserTransactionState extends State<UserTransaction> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        NewTransaction(),
+        NewTransaction(_addNewTransaction),
         TransactionList(_userTransaction),
       ],
     );
