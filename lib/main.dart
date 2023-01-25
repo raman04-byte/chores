@@ -53,9 +53,39 @@ class _MyHomePageState extends State<MyHomePage> {
           title: const Text('Flutter App'),
         ),
         body: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            Container(
+              width: double.infinity,
+              child: Card(
+                color: Colors.blue,
+                elevation: 5,
+                child: Text('CHART!'),
+              ),
+            ),
             Card(
-              child: Text('CHART!'),
+              elevation: 5,
+              child: Container(
+                padding: EdgeInsets.all(10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                  TextField(
+                    decoration: InputDecoration(labelText: 'Title'),
+                  ),
+                  TextField(
+                    decoration: InputDecoration(labelText: 'Amount'),
+                  ),
+                  TextButton(
+                      onPressed: () {},
+                      child: const Text(
+                        'Add Transation',
+                        style: TextStyle(
+                          color: Colors.purpleAccent,
+                        ),
+                      )),
+                ]),
+              ),
             ),
             Column(
                 children: transations.map((e) {
@@ -70,7 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     )),
                     padding: EdgeInsets.all(10),
                     child: Text(
-                    '\$ ${e.amount}',
+                      '\$ ${e.amount}',
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
