@@ -1,8 +1,5 @@
-import 'package:chores/widgets/new_tranaction.dart';
-import 'package:chores/widgets/transaction_list.dart';
 import 'package:flutter/material.dart';
 
-import '../models/transaction.dart';
 
 class UserTransaction extends StatefulWidget {
   const UserTransaction({super.key});
@@ -12,26 +9,12 @@ class UserTransaction extends StatefulWidget {
 }
 
 class _UserTransactionState extends State<UserTransaction> {
-  final List<Transation> _userTransaction = [];
-
-  void _addNewTransaction(String txTitle, double txAmount) {
-    final newTx = Transation(
-      title: txTitle,
-      amount: txAmount,
-      date: DateTime.now(),
-      id: DateTime.now().toString(),
-    );
-    setState(() {
-      _userTransaction.add(newTx);
-    });
-  }
-
+  
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [
-        NewTransaction(_addNewTransaction),
-        TransactionList(_userTransaction),
+      children: const [
+        // NewTransaction(_addNewTransaction),
       ],
     );
   }
