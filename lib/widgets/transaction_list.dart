@@ -4,13 +4,14 @@ import 'package:intl/intl.dart';
 
 class TransactionList extends StatefulWidget {
   final List<Transation> transations;
-  const TransactionList(this.transations, {super.key});
+  TransactionList(this.transations);
 
   @override
   State<TransactionList> createState() => _TransactionListState();
 }
 
 class _TransactionListState extends State<TransactionList> {
+  final List<Transation> transations = [];
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -39,10 +40,8 @@ class _TransactionListState extends State<TransactionList> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      widget.transations[index].title,
-                      style: Theme.of(context).textTheme.headline6
-                    ),
+                    Text(widget.transations[index].title,
+                        style: Theme.of(context).textTheme.headline6),
                     Text(
                       DateFormat.yMMMd().format(widget.transations[index].date),
                       style: TextStyle(color: Colors.grey.shade700),

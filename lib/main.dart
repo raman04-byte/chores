@@ -103,7 +103,26 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Text('CHART!'),
               ),
             ),
-            TransactionList(_userTransaction),
+            _userTransaction.isEmpty
+                ? Column(
+                    children: [
+                      Text(
+                        'Nothing to display',
+                        style: Theme.of(context).textTheme.headline6,
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                        height: 200,
+                        child: Image.asset(
+                          'assets/images/waiting.png',
+                          fit: BoxFit.cover,
+                        ),
+                      )
+                    ],
+                  )
+                : TransactionList(_userTransaction),
           ],
         ),
       ),
