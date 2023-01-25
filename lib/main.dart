@@ -1,7 +1,6 @@
 import 'package:chores/widgets/new_tranaction.dart';
 import 'package:chores/widgets/transaction_list.dart';
 import 'package:flutter/material.dart';
-
 import 'models/transaction.dart';
 
 void main() {
@@ -17,8 +16,21 @@ class MyApp extends StatelessWidget {
       title: 'Chores',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        textTheme: ThemeData.light().textTheme.copyWith(
+                headline6: const TextStyle(
+              fontFamily: 'OpenSans',
+              fontWeight: FontWeight.bold,
+              fontSize: 18,
+            )),
         colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.purple)
             .copyWith(secondary: Colors.amber),
+        fontFamily: 'Quicksand',
+        appBarTheme: const AppBarTheme(
+          titleTextStyle: TextStyle(
+              fontFamily: 'OpenSans',
+              fontSize: 20,
+              fontWeight: FontWeight.bold),
+        ),
       ),
       home: const MyHomePage(title: 'Chores Home Page'),
     );
@@ -55,8 +67,8 @@ class _MyHomePageState extends State<MyHomePage> {
         builder: (_) {
           return GestureDetector(
             onTap: () {},
-            child: NewTransaction(_addNewTransaction),
             behavior: HitTestBehavior.opaque,
+            child: NewTransaction(_addNewTransaction),
           );
         });
   }
@@ -65,11 +77,18 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Chores'),
+        title: const Text(
+          'Personal Expenses',
+          style: TextStyle(
+            fontFamily: 'Open Sans',
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+        ),
         actions: [
           IconButton(
               onPressed: () => _startAddNewTransaction(context),
-              icon: Icon(Icons.add))
+              icon: const Icon(Icons.add))
         ],
       ),
       body: SingleChildScrollView(
@@ -78,7 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             Container(
               width: double.infinity,
-              child: Card(
+              child: const Card(
                 color: Colors.blue,
                 elevation: 5,
                 child: Text('CHART!'),
@@ -91,7 +110,7 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
           onPressed: () => _startAddNewTransaction(context),
-          child: Icon(Icons.add)),
+          child: const Icon(Icons.add)),
     );
   }
 }

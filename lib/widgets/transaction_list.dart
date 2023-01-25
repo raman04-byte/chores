@@ -2,27 +2,34 @@ import 'package:chores/models/transaction.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-class TransactionList extends StatelessWidget {
-  late final List<Transation> transations;
-  TransactionList(this.transations);
+class TransactionList extends StatefulWidget {
+  final List<Transation> transations;
+  const TransactionList(this.transations, {super.key});
+
+  @override
+  State<TransactionList> createState() => _TransactionListState();
+}
+
+class _TransactionListState extends State<TransactionList> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 300,
-      child: ListView.builder(
-          itemBuilder: (context,index){
+        height: 300,
+        child: ListView.builder(
+          itemBuilder: (context, index) {
             return Card(
               child: Row(children: [
                 Container(
-                  margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                  margin:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                   decoration: BoxDecoration(
                       border: Border.all(
                     color: Colors.purple.shade600,
                     width: 2,
                   )),
-                  padding: EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
                   child: Text(
-                    '\$ ${transations[index].amount.toStringAsFixed(2)}',
+                    '\$ ${widget.transations[index].amount.toStringAsFixed(2)}',
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
@@ -33,12 +40,11 @@ class TransactionList extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      transations[index].title,
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                      widget.transations[index].title,
+                      style: Theme.of(context).textTheme.headline6
                     ),
                     Text(
-                      DateFormat.yMMMd().format(transations[index].date),
+                      DateFormat.yMMMd().format(widget.transations[index].date),
                       style: TextStyle(color: Colors.grey.shade700),
                     )
                   ],
@@ -46,8 +52,7 @@ class TransactionList extends StatelessWidget {
               ]),
             );
           },
-          itemCount: transations.length,
-      )
-    );
+          itemCount: widget.transations.length,
+        ));
   }
 }
