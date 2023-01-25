@@ -78,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return _userTransaction.where((tx) {
       return tx.date.isAfter(
         DateTime.now().subtract(
-          Duration(days: 7),
+          const Duration(days: 7),
         ),
       );
     }).toList();
