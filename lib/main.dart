@@ -1,3 +1,4 @@
+import 'package:chores/widgets/chart.dart';
 import 'package:chores/widgets/new_tranaction.dart';
 import 'package:chores/widgets/transaction_list.dart';
 import 'package:flutter/material.dart';
@@ -73,6 +74,16 @@ class _MyHomePageState extends State<MyHomePage> {
         });
   }
 
+  List<Transation> get _recentTransaction {
+    return _userTransaction.where((tx) {
+      return tx.date.isAfter(
+        DateTime.now().subtract(
+          Duration(days: 7),
+        ),
+      );
+    }).toList();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -95,14 +106,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Container(
-              width: double.infinity,
-              child: const Card(
-                color: Colors.blue,
-                elevation: 5,
-                child: Text('CHART!'),
-              ),
-            ),
+            Chart(_recentTransaction),
             _userTransaction.isEmpty
                 ? Column(
                     children: [
