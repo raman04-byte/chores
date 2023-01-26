@@ -41,7 +41,7 @@ class _TransactionListState extends State<TransactionList> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(widget.transations[index].title,
-                        style: Theme.of(context).textTheme.headline6),
+                        style: Theme.of(context).textTheme.titleLarge),
                     Text(
                       DateFormat.yMMMd().format(widget.transations[index].date),
                       style: TextStyle(color: Colors.grey.shade700),

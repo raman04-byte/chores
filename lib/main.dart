@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         textTheme: ThemeData.light().textTheme.copyWith(
-                headline6: const TextStyle(
+                titleLarge: const TextStyle(
               fontFamily: 'OpenSans',
               fontWeight: FontWeight.bold,
               fontSize: 18,
@@ -112,7 +112,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     children: [
                       Text(
                         'Nothing to display',
-                        style: Theme.of(context).textTheme.headline6,
+                        style: Theme.of(context).textTheme.titleLarge,
                       ),
                       const SizedBox(
                         height: 20,
