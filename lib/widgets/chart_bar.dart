@@ -16,8 +16,11 @@ class _ChatBarState extends State<ChatBar> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        FittedBox(
-          child: Text('\$${widget.spendingAmount.toStringAsFixed(0)}'),
+        Container(
+          height: 20,
+          child: FittedBox(
+            child: Text('\$${widget.spendingAmount.toStringAsFixed(0)}'),
+          ),
         ),
         const SizedBox(
           height: 4,

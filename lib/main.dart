@@ -23,8 +23,6 @@ class MyApp extends StatelessWidget {
               fontWeight: FontWeight.bold,
               fontSize: 18,
             )),
-        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.purple)
-            .copyWith(secondary: Colors.amber),
         fontFamily: 'Quicksand',
         appBarTheme: const AppBarTheme(
           titleTextStyle: TextStyle(
@@ -32,6 +30,9 @@ class MyApp extends StatelessWidget {
               fontSize: 20,
               fontWeight: FontWeight.bold),
         ),
+        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.purple)
+            .copyWith(secondary: Colors.amber)
+            .copyWith(error: Colors.red),
       ),
       home: const MyHomePage(title: 'Chores Home Page'),
     );
@@ -50,11 +51,12 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final List<Transation> _userTransaction = [];
 
-  void _addNewTransaction(String txTitle, double txAmount) {
+  void _addNewTransaction(
+      String txTitle, double txAmount, DateTime chosenDate) {
     final newTx = Transation(
       title: txTitle,
       amount: txAmount,
-      date: DateTime.now(),
+      date: chosenDate,
       id: DateTime.now().toString(),
     );
     setState(() {
@@ -82,6 +84,14 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       );
     }).toList();
+  }
+
+  void _deleteTranscation(String id) {
+    setState(() {
+      _userTransaction.removeWhere((element) {
+        return element.id == id;
+      });
+    });
   }
 
   @override
@@ -126,7 +136,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       )
                     ],
                   )
-                : TransactionList(_userTransaction),
+                : TransactionList(_userTransaction,_deleteTranscation),
           ],
         ),
       ),
