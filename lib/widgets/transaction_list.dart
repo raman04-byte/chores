@@ -20,7 +20,7 @@ class _TransactionListState extends State<TransactionList> {
         itemBuilder: (context, index) {
           return Card(
             elevation: 5,
-            margin: EdgeInsets.symmetric(vertical: 8, horizontal: 5),
+            margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 5),
             child: Row(
               children: [
                 CircleAvatar(
@@ -31,7 +31,8 @@ class _TransactionListState extends State<TransactionList> {
                     child: FittedBox(
                       child: Text(
                         '\$${widget.transations[index].amount}',
-                        style: TextStyle(color: Colors.white, fontSize: 40),
+                        style:
+                            const TextStyle(color: Colors.white, fontSize: 40),
                       ),
                     ),
                   ),
