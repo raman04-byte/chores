@@ -2,4 +2,4 @@
 
 A new Flutter project.
 
-# This is currently is in developing
+# The application is now done developing
