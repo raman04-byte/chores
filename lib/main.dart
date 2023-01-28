@@ -1,6 +1,8 @@
+import 'dart:io';
 import 'package:chores/widgets/chart.dart';
 import 'package:chores/widgets/new_tranaction.dart';
 import 'package:chores/widgets/transaction_list.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'models/transaction.dart';
 
@@ -103,10 +105,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final isLandscape =
-        MediaQuery.of(context).orientation == Orientation.landscape;
-
-    final appBar = AppBar(
+    final mediaQuery = MediaQuery.of(context);
+    final isLandscape = mediaQuery.orientation == Orientation.landscape;
+    final PreferredSizeWidget appBar = AppBar(
       title: const Text(
         'Personal Expenses',
         style: TextStyle(
@@ -121,16 +122,17 @@ class _MyHomePageState extends State<MyHomePage> {
             icon: const Icon(Icons.add))
       ],
     );
+
     final txListWidget = Container(
-      height: (MediaQuery.of(context).size.height -
+      height: (mediaQuery.size.height -
               appBar.preferredSize.height -
-              MediaQuery.of(context).padding.top) *
+              mediaQuery.padding.top) *
           0.7,
       child: TransactionList(_userTransaction, _deleteTranscation),
     );
-    return Scaffold(
-      appBar: appBar,
-      body: SingleChildScrollView(
+
+    final pageBody = SafeArea(
+      child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -138,8 +140,8 @@ class _MyHomePageState extends State<MyHomePage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text('Show chart'),
-                  Switch(
+                  Text('Show chart',style: Theme.of(context).textTheme.titleLarge,),
+                  Switch.adaptive(
                     value: _showChart,
                     onChanged: (val) {
                       setState(() {
@@ -151,9 +153,9 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             if (!isLandscape)
               Container(
-                height: (MediaQuery.of(context).size.height -
+                height: (mediaQuery.size.height -
                         appBar.preferredSize.height -
-                        MediaQuery.of(context).padding.top) *
+                        mediaQuery.padding.top) *
                     0.3,
                 child: Chart(_recentTransaction),
               ),
@@ -161,9 +163,9 @@ class _MyHomePageState extends State<MyHomePage> {
             if (isLandscape)
               _showChart
                   ? Container(
-                      height: (MediaQuery.of(context).size.height -
+                      height: (mediaQuery.size.height -
                               appBar.preferredSize.height -
-                              MediaQuery.of(context).padding.top) *
+                              mediaQuery.padding.top) *
                           0.7,
                       child: Chart(_recentTransaction),
                     )
@@ -171,10 +173,34 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: FloatingActionButton(
-          onPressed: () => _startAddNewTransaction(context),
-          child: const Icon(Icons.add)),
     );
+
+    return Platform.isIOS
+        ? CupertinoPageScaffold(
+            navigationBar: CupertinoNavigationBar(
+              middle: const Text('Personal Expenses'),
+              trailing: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  GestureDetector(
+                    child: const Icon(CupertinoIcons.add),
+                    onTap: () => _startAddNewTransaction(context),
+                  )
+                ],
+              ),
+            ),
+            child: pageBody,
+          )
+        : Scaffold(
+            appBar: appBar,
+            body: pageBody,
+            floatingActionButtonLocation:
+                FloatingActionButtonLocation.centerFloat,
+            floatingActionButton: Platform.isIOS
+                ? Container()
+                : FloatingActionButton(
+                    onPressed: () => _startAddNewTransaction(context),
+                    child: const Icon(Icons.add)),
+          );
   }
 }
