@@ -61,7 +61,10 @@ class _TransactionListState extends State<TransactionList> {
                   ),
                   trailing: MediaQuery.of(context).size.width > 460
                       ? TextButton.icon(
-                          icon: Icon(Icons.delete,color: Theme.of(context).colorScheme.error,),
+                          icon: Icon(
+                            Icons.delete,
+                            color: Theme.of(context).colorScheme.error,
+                          ),
                           label: Text(
                             'Delete',
                             style: TextStyle(

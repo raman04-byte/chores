@@ -140,7 +140,10 @@ class _MyHomePageState extends State<MyHomePage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Show chart',style: Theme.of(context).textTheme.titleLarge,),
+                  Text(
+                    'Show chart',
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
                   Switch.adaptive(
                     value: _showChart,
                     onChanged: (val) {
@@ -175,36 +178,35 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
 
-    return 
-    // Platform.isIOS
-    //     ? CupertinoPageScaffold(
-    //         navigationBar: CupertinoNavigationBar(
-    //           middle: const Text('Personal Expenses'),
-    //           trailing: Row(
-    //             mainAxisSize: MainAxisSize.min,
-    //             children: [
-    //               GestureDetector(
-    //                 child: const Icon(CupertinoIcons.add),
-    //                 onTap: () => _startAddNewTransaction(context),
-    //               )
-    //             ],
-    //           ),
-    //         ),
-    //         child: pageBody,
-    //       )
-    //     :
-         Scaffold(
-            appBar: appBar,
-            body: pageBody,
-            floatingActionButtonLocation:
-                FloatingActionButtonLocation.centerFloat,
-            floatingActionButton: 
-            // Platform.isIOS
-            //     ? Container()
-            //     :
-                 FloatingActionButton(
-                    onPressed: () => _startAddNewTransaction(context),
-                    child: const Icon(Icons.add)),
-          );
+    return
+        // Platform.isIOS
+        //     ? CupertinoPageScaffold(
+        //         navigationBar: CupertinoNavigationBar(
+        //           middle: const Text('Personal Expenses'),
+        //           trailing: Row(
+        //             mainAxisSize: MainAxisSize.min,
+        //             children: [
+        //               GestureDetector(
+        //                 child: const Icon(CupertinoIcons.add),
+        //                 onTap: () => _startAddNewTransaction(context),
+        //               )
+        //             ],
+        //           ),
+        //         ),
+        //         child: pageBody,
+        //       )
+        //     :
+        Scaffold(
+      appBar: appBar,
+      body: pageBody,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton:
+          // Platform.isIOS
+          //     ? Container()
+          //     :
+          FloatingActionButton(
+              onPressed: () => _startAddNewTransaction(context),
+              child: const Icon(Icons.add)),
+    );
   }
 }
