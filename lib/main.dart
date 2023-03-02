@@ -2,7 +2,6 @@ import 'dart:io';
 import 'package:chores/widgets/chart.dart';
 import 'package:chores/widgets/new_tranaction.dart';
 import 'package:chores/widgets/transaction_list.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'models/transaction.dart';
 
