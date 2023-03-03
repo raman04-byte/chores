@@ -25,7 +25,7 @@ class _TransactionListState extends State<TransactionList> {
                 const SizedBox(
                   height: 20,
                 ),
-                Container(
+                SizedBox(
                     height: constraints.maxHeight * 0.6,
                     child: Image.asset(
                       'assets/images/waiting.png',

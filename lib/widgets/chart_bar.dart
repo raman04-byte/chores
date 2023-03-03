@@ -18,7 +18,7 @@ class _ChatBarState extends State<ChatBar> {
       builder: (ctx, constraint) {
         return Column(
           children: [
-            Container(
+            SizedBox(
               height: constraint.maxHeight * 0.15,
               child: FittedBox(
                 child: Text('\$${widget.spendingAmount.toStringAsFixed(0)}'),
@@ -27,7 +27,7 @@ class _ChatBarState extends State<ChatBar> {
             SizedBox(
               height: constraint.maxHeight * 0.05,
             ),
-            Container(
+            SizedBox(
               height: constraint.maxHeight * 0.6,
               width: 10,
               child: Stack(
@@ -54,7 +54,7 @@ class _ChatBarState extends State<ChatBar> {
             SizedBox(
               height: constraint.maxHeight * 0.05,
             ),
-            Container(
+            SizedBox(
               height: constraint.maxHeight * 0.15,
               child: FittedBox(
                 child: Text(widget.label),
