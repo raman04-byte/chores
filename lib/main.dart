@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:chores/widgets/chart.dart';
 import 'package:chores/widgets/new_tranaction.dart';
 import 'package:chores/widgets/transaction_list.dart';
@@ -122,7 +121,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ],
     );
 
-    final txListWidget = Container(
+    final txListWidget = SizedBox(
       height: (mediaQuery.size.height -
               appBar.preferredSize.height -
               mediaQuery.padding.top) *
@@ -154,7 +153,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],
               ),
             if (!isLandscape)
-              Container(
+              SizedBox(
                 height: (mediaQuery.size.height -
                         appBar.preferredSize.height -
                         mediaQuery.padding.top) *
@@ -164,7 +163,7 @@ class _MyHomePageState extends State<MyHomePage> {
             if (!isLandscape) txListWidget,
             if (isLandscape)
               _showChart
-                  ? Container(
+                  ? SizedBox(
                       height: (mediaQuery.size.height -
                               appBar.preferredSize.height -
                               mediaQuery.padding.top) *
